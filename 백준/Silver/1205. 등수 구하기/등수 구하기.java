@@ -12,15 +12,16 @@ public class Main {
         size = Integer.parseInt(s[2]);
 
         PriorityQueue<Integer> data = new PriorityQueue<>(Collections.reverseOrder());
-
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         if(N != 0 ){
             s = br.readLine().split(" ");
             for (int i = 0; i < N; i++) {
-                data.offer(Integer.parseInt(s[i]));
+                int a = Integer.parseInt(s[i]);
+                data.offer(a);
+                minHeap.offer(a);
             }
         }
-        ArrayList<Integer> temp = new ArrayList<>(data);
-        if(data.size() == size && point <= temp.get(temp.size()-1)){
+        if(data.size() == size && point <= minHeap.peek()){
             System.out.println(-1);
             return;
         }else{
