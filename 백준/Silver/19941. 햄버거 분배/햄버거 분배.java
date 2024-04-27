@@ -1,42 +1,36 @@
-
 import java.io.*;
-import java.util.*;
+import java.util.HashSet;
 
 public class Main {
     static int N, K;
-    static boolean[] visited;
+    static HashSet<Integer> visited;
 
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s[] = br.readLine().split(" ");
         N = Integer.parseInt(s[0]);
         K = Integer.parseInt(s[1]);
+        visited = new HashSet<>();
 
         char[] ham = br.readLine().toCharArray();
-        ArrayList<Integer> person = new ArrayList<>();
-        ArrayList<Integer> hamburger = new ArrayList<>();
+
         for (int i = 0; i < N; i++) {
-            if(ham[i] =='H') hamburger.add(i);
-            else person.add(i);
-        }
-        visited = new boolean[hamburger.size()];
-        int cnt = 0;
-        for (int i = 0; i < person.size(); i++) {
-            int per = person.get(i);
-            for (int j = 0; j < hamburger.size(); j++) {
-                int hamIdx = hamburger.get(j);
-                if (!visited[j] && Math.abs(per -hamIdx) <= K) {
-                    visited[j] = true;
-                    cnt++;
-                    break;
+            if(ham[i] == 'P'){
+                for (int j = Math.max(0,i-K); j <= i+K && j<N; j++) {
+                    if(j == i ) continue;
+
+                    if(ham[j] =='H' && !visited.contains(j)){
+                        visited.add(j);
+                        break;
+                    }
+
                 }
+
             }
         }
 
-
-
-
-        System.out.println(cnt);
+        System.out.println(visited.size());
 
     }
 }
+
