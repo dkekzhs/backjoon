@@ -31,8 +31,8 @@ public class Main {
 
     private static int binarySearch() {
         int start = 1;
-        int end = houses[N - 1] - houses[0] + 1;
-        int result = 0; 
+        int end = houses[N - 1] - houses[0];
+        int result = 0;
         while (start <= end) {
             int mid = (start + end) / 2;
             int install = count(mid);
