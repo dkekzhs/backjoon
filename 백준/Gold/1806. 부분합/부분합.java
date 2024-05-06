@@ -1,4 +1,5 @@
 
+
 import java.io.*;
 import java.util.*;
 
@@ -26,7 +27,7 @@ public class Main{
             if(s > sum){
                 sum += arr[end++];
             }else{
-                minLength = Math.min(minLength, Math.abs(start - end));
+                minLength = Math.min(minLength, end - start);
                 sum -= arr[start++];
             }
         }
