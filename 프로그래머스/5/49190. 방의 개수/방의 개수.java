@@ -58,7 +58,7 @@ class Solution {
         points.add(cur);
         for(int arrow : arrows){
             
-            for(int i=0; i<2; i++){
+            for(int i=0; i<4; i++){
                 int nextX = cur.x + dx[arrow];
                 int nextY = cur.y + dy[arrow];
                 
